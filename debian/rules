@@ -6,9 +6,7 @@ BUILDDIR = build_dir
 build:
 	cd example-4
 	mkdir $(BUILDDIR)
-	cd $(BUILDDIR)
-	cmake -DCMAKE_INSTALL_PREFIX=../debian/tmp/usr -DRTLSDR=ON ..
-	cd ..
+	cd $(BUILDDIR); cmake -DCMAKE_INSTALL_PREFIX=../debian/tmp/usr -DRTLSDR=ON ..
 	make -C $(BUILDDIR)
 
 # thirdly called by launchpad
