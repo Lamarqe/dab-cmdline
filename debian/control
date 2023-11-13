@@ -1,0 +1,12 @@
+Source: dab-cmdline
+Section: devel
+Priority: optional
+Maintainer:  Jan van Katwijk <J.vanKatwijk@gmail.com>
+Build-Depends: git, cmake, build-essential, g++, pkg-config, libsndfile1-dev, libfftw3-dev, portaudio19-dev, libfaad-dev, zlib1g-dev, libusb-1.0-0-dev, mesa-common-dev, libgl1-mesa-dev, libsamplerate0-dev, rtl-sdr
+Homepage: https://github.com/JvanKatwijk/dab-cmdline
+
+Package: dab-cmdline
+Architecture: any
+Depends: 
+Description: DAB command line and DAB library
+ DAB decoding library with example of its use
