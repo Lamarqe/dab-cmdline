@@ -1,13 +1,13 @@
 #!/usr/bin/make -f
 
 BUILDDIR = build_dir
-SUBDIR = example-4/
+SUBDIR = example-4
 
 # secondly called by launchpad
 build:
-	mkdir $(SUBDIR)$(BUILDDIR);
-	cd $(SUBDIR)$(BUILDDIR); cmake -DCMAKE_INSTALL_PREFIX=../debian/tmp/usr -DRTLSDR=ON ..
-	make -C $(SUBDIR)$(BUILDDIR)
+	mkdir $(BUILDDIR);
+	cd $(BUILDDIR); cmake -DCMAKE_INSTALL_PREFIX=../debian/tmp/usr -DRTLSDR=ON ../$(SUBDIR)
+	make -C $(BUILDDIR)
 
 # thirdly called by launchpad
 binary: binary-indep binary-arch
@@ -16,14 +16,14 @@ binary-indep:
 	# nothing to be done
 
 binary-arch:
-	cd $(SUBDIR)$(BUILDDIR); cmake -P cmake_install.cmake
-	mkdir $(SUBDIR)debian/tmp/DEBIAN
-	cd $(SUBDIR); dpkg-gencontrol -pdab-cmdline
-	cd $(SUBDIR); dpkg --build debian/tmp ..
+	cd $(BUILDDIR); cmake -P cmake_install.cmake
+	mkdir debian/tmp/DEBIAN
+	dpkg-gencontrol -pdab-cmdline
+	dpkg --build debian/tmp ..
 
 # firstly called by launchpad
 clean:
 	rm -f build
-	rm -rf $(SUBDIR)$(BUILDDIR)
+	rm -rf $(BUILDDIR)
 
 .PHONY: binary binary-arch binary-indep clean
