@@ -6,7 +6,7 @@ SUBDIR = example-4
 # secondly called by launchpad
 build:
 	mkdir $(BUILDDIR);
-	cd $(BUILDDIR); cmake -DCMAKE_INSTALL_PREFIX=../debian/tmp/usr -DRTLSDR=ON ../$(SUBDIR)
+	cd $(BUILDDIR); cmake -DCMAKE_INSTALL_PREFIX=../debian/tmp/usr/local/bin -DRTLSDR=ON ../$(SUBDIR)
 	make -C $(BUILDDIR)
 
 # thirdly called by launchpad
