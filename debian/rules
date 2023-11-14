@@ -18,8 +18,8 @@ binary-indep:
 binary-arch:
 	cd $(SUBDIR)$(BUILDDIR); cmake -P cmake_install.cmake
 	mkdir $(SUBDIR)debian/tmp/DEBIAN
-	dpkg-gencontrol -pdab-cmdline
-	dpkg --build $(SUBDIR)debian/tmp ..
+	cd $(SUBDIR); dpkg-gencontrol -pdab-cmdline
+	cd $(SUBDIR); dpkg --build debian/tmp ..
 
 # firstly called by launchpad
 clean:
