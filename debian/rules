@@ -1,12 +1,19 @@
 #!/usr/bin/make -f
 
 BUILDDIR = build_dir
-SUBDIR = example-4
 
 # secondly called by launchpad
 build:
 	mkdir $(BUILDDIR);
-	cd $(BUILDDIR); cmake -DCMAKE_INSTALL_PREFIX=../debian/tmp/usr/bin -DRTLSDR=ON ../$(SUBDIR)
+	cd $(BUILDDIR); cmake -DCMAKE_INSTALL_PREFIX=../debian/tmp/usr/bin -DRTLSDR=ON ../example-1
+	make -C $(BUILDDIR)
+	cd $(BUILDDIR); cmake -DCMAKE_INSTALL_PREFIX=../debian/tmp/usr/bin -DRTLSDR=ON ../example-2
+	make -C $(BUILDDIR)
+	cd $(BUILDDIR); cmake -DCMAKE_INSTALL_PREFIX=../debian/tmp/usr/bin -DRTLSDR=ON ../example-3
+	make -C $(BUILDDIR)
+	cd $(BUILDDIR); cmake -DCMAKE_INSTALL_PREFIX=../debian/tmp/usr/bin -DRTLSDR=ON ../example-4
+	make -C $(BUILDDIR)
+	cd $(BUILDDIR); cmake -DCMAKE_INSTALL_PREFIX=../debian/tmp/usr/bin -DRTLSDR=ON ../dab-scanner
 	make -C $(BUILDDIR)
 
 # thirdly called by launchpad
